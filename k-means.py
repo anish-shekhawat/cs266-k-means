@@ -1,3 +1,6 @@
+import numpy as np
+import random
+
 
 def euclidean_dist(pointA, pointB):
     """Calculates Euclidean distance between two points and returns float"""
@@ -11,11 +14,28 @@ def euclidean_dist(pointA, pointB):
     return sum ** 0.5
 
 
+def assign_cluster(pointL, centroidL, k):
+    clust_indexl = [0] * 20
+    clusterl = [[] for i in range(k)]
+    for pindex, point in enumerate(plist):
+
+        min_dist = euclidean_dist(centroid[0], point)
+        clust_indexl[pindex] = 0
+
+        for index, center in enumerate(centroid[1:]):
+
+            if (euclidean_dist(center, point) < min_dist):
+                min_dist = euclidean_dist(center, point)
+                clust_indexl[pindex] = index + 1
+        clusterl[clust_indexl[pindex]].append(point)
+    return clusterl, clust_indexl
+
+
 plist = []
 with open("data.txt") as ipfile:
     for line in ipfile:
         words = line.split()
-        plist.append((float(words[1]), float(words[2]), 0))
+        plist.append([float(words[1]), float(words[2])])
 
 k = input("Enter number of clusters: ")
 
@@ -31,7 +51,21 @@ mean_y = (max_y - min_y) / (k+1)
 
 centroid = []
 
-for i in range(1, k+1):
-    centroid.append((min_x + (i * mean_x), min_y + (i * mean_y)))
+# for i in range(1, k+1):
+# centroid.append([min_x + (i * mean_x), min_y + (i * mean_y)])
 
-print euclidean_dist(plist[0], plist[1])
+rand = random.sample(range(20), k)
+
+for a in rand:
+    centroid.append(plist[a])
+
+cluster, cluster_index = assign_cluster(plist, centroid, k)
+print cluster_index
+
+for i in range(25):
+    for index, clust in enumerate(cluster):
+            centroid[index] = np.mean(clust, 0).tolist()
+
+    cluster, cluster_index = assign_cluster(plist, centroid, k)
+
+print cluster_index
