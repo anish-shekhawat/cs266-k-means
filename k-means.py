@@ -1,5 +1,6 @@
 import numpy as np
 import random
+import matplotlib.pyplot as plt
 
 
 def euclidean_dist(pointA, pointB):
@@ -51,21 +52,32 @@ mean_y = (max_y - min_y) / (k+1)
 
 centroid = []
 
+# A different initialization approach--
 # for i in range(1, k+1):
 # centroid.append([min_x + (i * mean_x), min_y + (i * mean_y)])
 
+# Initialize Centroids
 rand = random.sample(range(20), k)
-
 for a in rand:
     centroid.append(plist[a])
 
 cluster, cluster_index = assign_cluster(plist, centroid, k)
-print cluster_index
 
-for i in range(25):
+for i in range(500):
     for index, clust in enumerate(cluster):
             centroid[index] = np.mean(clust, 0).tolist()
 
     cluster, cluster_index = assign_cluster(plist, centroid, k)
 
-print cluster_index
+print "Cluster Index of points:", cluster_index
+
+x = []
+y = []
+for pt in plist:
+    x.append(pt[0])
+    y.append(pt[1])
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+scatter = ax.scatter(x, y, c=cluster_index, s=50)
+plt.show()
