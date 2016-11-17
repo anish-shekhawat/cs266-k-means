@@ -1,4 +1,4 @@
-# K-means Clustering [![LICENSE](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/anish/k-means#license)
+# K-means Clustering [![LICENSE](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/anish-shekhawat/k-means#license)
 
 
 Clustering of data points in ``` data.txt ``` using the K-means Algorithm
