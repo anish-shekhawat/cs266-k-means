@@ -1,11 +1,10 @@
 # K-means Clustering [![LICENSE](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/anish/k-means#license)
 
 
-TODO: Write a project description
-
 Clustering of data points in ```sh data.txt ``` using the K-means Algorithm
 
-TODO: Describe the installation process
+## Installation
+
 ```sh
 $ python k-means.py
 ```
