@@ -1,7 +1,7 @@
 # K-means Clustering [![LICENSE](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/anish/k-means#license)
 
 
-Clustering of data points in ```sh data.txt ``` using the K-means Algorithm
+Clustering of data points in ``` data.txt ``` using the K-means Algorithm
 
 ## Installation
 
